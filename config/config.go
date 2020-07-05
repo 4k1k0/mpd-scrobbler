@@ -24,6 +24,8 @@ type Settings struct {
 type User struct {
 	Username string
 	Password string
+	Key      string
+	Secret   string
 }
 
 // New returns a pointer to a settings struct
@@ -35,6 +37,8 @@ func New() *Settings {
 		User: User{
 			Username: getEnvAsString("USERNAME", ""),
 			Password: getEnvAsString("PASSWORD", ""),
+			Key:      getEnvAsString("KEY", ""),
+			Secret:   getEnvAsString("SECRET", ""),
 		},
 	}
 }
