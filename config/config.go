@@ -5,11 +5,6 @@ import (
 	"strconv"
 )
 
-// config file
-// database file
-// mpd port
-// mpd server ?
-
 // Settings contains the information to succesfuly config a
 // Last.fm user for MPD
 type Settings struct {
