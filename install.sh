@@ -17,7 +17,7 @@ echo -n "MPD Port: (default 6600) "
 read port
 echo ""
 
-touch .env
+touch .env mpd-scrobbler.service
 
 echo "USERNAME=$username" >> .env
 echo "PASSWORD=$password" >> .env
@@ -35,3 +35,22 @@ then
     echo "PORT=$port" >> .env
 fi
 echo "" >> .env
+
+go build
+
+echo "" >> mpd-scrobbler.service
+echo "[Unit]" >> mpd-scrobbler.service
+echo "Description=MPD Scrobbler for Last.fm" >> mpd-scrobbler.service
+echo "After=network.target" >> mpd-scrobbler.service
+echo "" >> mpd-scrobbler.service
+echo "[Service]" >> mpd-scrobbler.service
+echo "PORT=1409" >> mpd-scrobbler.service
+echo "Type=simple" >> mpd-scrobbler.service
+echo "User=$USER" >> mpd-scrobbler.service
+echo "WorkingDirectory=$GOPATH/xxx" >> mpd-scrobbler.service
+echo "ExecStart=$GOPATH/xxx" >> mpd-scrobbler.service
+echo "Restart=on-failure" >> mpd-scrobbler.service
+echo "" >> mpd-scrobbler.service
+echo "[Install]" >> mpd-scrobbler.service
+echo "WantedBy=multi-user.target" >> mpd-scrobbler.service
+echo "" >> mpd-scrobbler.service
