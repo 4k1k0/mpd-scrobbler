@@ -58,7 +58,7 @@ func StartApp() {
 	defer db.Close()
 
 	// TODO: Handle this hardcoded strings
-	api, err := scrobble.New(db, "", "", "", settings.User.Username, settings.User.Password, "")
+	api, err := scrobble.New(db, "lastfm", settings.User.Key, settings.User.Secret, settings.User.Username, settings.User.Password, "")
 	if err != nil {
 		log.Fatal(err)
 	}
