@@ -9,9 +9,15 @@ import (
 // Last.fm user for MPD
 type Settings struct {
 	Database string
-	Port     int
-	Server   string
+	Mpd      MPD
 	User     User
+}
+
+// MPD contains the port in which is running MPD
+// and its server
+type MPD struct {
+	Port   int
+	Server string
 }
 
 // User contains username and password for
