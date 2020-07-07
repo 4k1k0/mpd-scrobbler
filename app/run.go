@@ -26,7 +26,9 @@ const (
 )
 
 func catchInterrupt() {
+	// To allow the user to send Ctrl-C to shut down the program
 	c := make(chan os.Signal, 1)
+	// This will shut down the program when channel c gets at least 1 signal
 	signal.Notify(c, os.Interrupt, os.Kill)
 	s := <-c
 	log.Printf("caught %s: shutting down", s)
@@ -42,7 +44,7 @@ func StartApp() {
 	settings := config.New()
 
 	// Connect to MPD
-	c, err := client.Dial("tcp", fmt.Sprintf(":%d", settings.Port))
+	c, err := client.Dial("tcp", fmt.Sprintf(":%d", settings.Mpd.Port))
 	if err != nil {
 		log.Fatal(err)
 	}
