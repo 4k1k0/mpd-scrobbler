@@ -15,6 +15,7 @@ func ParseFile(file string) config.Settings {
 	if err != nil {
 		log.Fatal(err)
 	}
+	defer f.Close()
 
 	b, err := ioutil.ReadFile(file)
 	if err != nil {
