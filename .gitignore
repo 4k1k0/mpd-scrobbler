@@ -1,5 +1,3 @@
-config.toml
-scrobble.db
 .env
 mpd-scrobbler.service
 mpd-scrobbler
